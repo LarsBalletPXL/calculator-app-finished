@@ -23,8 +23,8 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://2tindevops.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_16dd7775cead49268ae05ae8ccfc4b25 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_e89d8cb53db94839b6dab18658a3e9e0 }}
+        username: 2TINDEVOPS
+        password: 5TbkM7bvKOp9GNF0T/s8kF1+a2W8CW/8zcptdh0Cov+ACRDavNC7
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
