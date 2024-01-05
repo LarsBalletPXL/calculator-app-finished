@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://2tin-devops17.azurewebsites.net//
-        username: ${{ secrets.AzureAppService_ContainerUsername_08d84488a8074cb4a36ce4f180d25398 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_3afbe9ec13da46b5a680d4b4fbc3daa4 }}
+        registry: https://index.docker.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_3ce45131587340f78e62fbc005fd017f }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_93bca7e2149445f3bc4e2ecab44680c0 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: 2tin-devops17.azurewebsites.net//${{ secrets.AzureAppService_ContainerUsername_08d84488a8074cb4a36ce4f180d25398 }}/appsvc/staticsite:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3ce45131587340f78e62fbc005fd017f }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: '2TIN-DevOps17'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6da8d2d30dec4c91ba170179f956027a }}
-        images: '2tin-devops17.azurewebsites.net//${{ secrets.AzureAppService_ContainerUsername_08d84488a8074cb4a36ce4f180d25398 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8aaa43b33f114efa8e4738cfb2df7be6 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3ce45131587340f78e62fbc005fd017f }}/mcr.microsoft.com/appsvc/staticsite:${{ github.sha }}'
